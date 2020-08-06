@@ -11,28 +11,70 @@ const proffys = [
         time_to: [1220]
     },
     {
-        name: "Neto Jeck Gonzaguinha",
-        avatar: "https://scontent.fjpa1-1.fna.fbcdn.net/v/t31.0-0/c0.0.395.395a/p526x296/861005_1388410458111593_2563081658070638479_o.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=aIsyAHOuXnYAX93GvJl&_nc_ht=scontent.fjpa1-1.fna&oh=ca68ddb9467cf9a0710d9c2e0cdb1ebc&oe=5F524BAC", 
+        name: "Mayk Brito",
+        avatar: "https://avatars2.githubusercontent.com/u/6643122?s=460&u=1e9e1f04b76fb5374e6a041f5e41dce83f3b5d92&v=4", 
         whatsaap: "40028922", 
-        bio: "Um admirador das ciências humanas, alto, negro, ZENsual e pseudo-intelectual",  
-        subject: "Filosofia", 
+        bio: "Entusiasta das melhores tecnologias de química avançada.<br><br>Apaixonado por explodir coisas em laboratório e por mudar a vida das pessoas através de experiências. Mais de 200.000 pessoas já passaram por uma das minhas explosões",  
+        subject: "Química", 
         cost: "20", 
-        weekday: [1],
-        time_from: [300], 
-        time_to: [2000]
+        weekday: [0],
+        time_from: [720], 
+        time_to: [1220]
     }
 ]
+
+const subjects = [
+    "Artes",
+    "Biologia",
+    "Cinências",
+    "Educação Física",
+    "Física",
+    "Geografia",
+    "História",
+    "Matemática",
+    "Português",
+    "Química"
+]
+
+const weekdays = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado"
+]
+
+function getSubject(subjectNumber) {
+    const arrayPosition = subjects[subjectNumber - 1]
+    return arrayPosition
+}
 
 function pageLanding(req, res) {
     return res.render("index.html")
 }
 
 function pageStudy(req, res) {
-    return res.render("study.html")
+    const filters = req.query
+    return res.render("study.html", {proffys, filters, subjects, weekdays})
 }
 
 function pageGiveClasses(req, res) {
-    return res.render("give-classes.html")
+    const data = req.query
+    const isNotEmpty = Object.keys(data).length > 0
+
+    if (isNotEmpty) {
+        data.subject = getSubject(data.subject)
+
+        proffys.push(data)
+
+        return res.redirect("/study")
+        
+    }
+    
+
+    return res.render("give-classes.html", {subjects, weekdays})
 }
 
 const express = require('express')
