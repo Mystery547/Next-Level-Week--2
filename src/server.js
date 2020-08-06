@@ -9,17 +9,6 @@ const proffys = [
         weekday: [0],
         time_from: [720], 
         time_to: [1220]
-    },
-    {
-        name: "Neto Jeck Gonzaguinha",
-        avatar: "https://scontent.fjpa1-1.fna.fbcdn.net/v/t31.0-0/c0.0.395.395a/p526x296/861005_1388410458111593_2563081658070638479_o.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=aIsyAHOuXnYAX93GvJl&_nc_ht=scontent.fjpa1-1.fna&oh=ca68ddb9467cf9a0710d9c2e0cdb1ebc&oe=5F524BAC", 
-        whatsaap: "40028922", 
-        bio: "Um admirador das ciências humanas, alto, negro, ZENsual e pseudo-intelectual",  
-        subject: "Filosofia", 
-        cost: "20", 
-        weekday: [1],
-        time_from: [300], 
-        time_to: [2000]
     }
 ]
 
